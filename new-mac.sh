@@ -97,8 +97,13 @@ open /Applications/Clipy.app
 echo "Change Clipy settings"
 echo "- General -> Max history size: 100 items"
 echo "- Menu -> Number of chars in the menu: 200 chars"
+read -p "Press enter to continue"
 # Sourcetree
 brew cask install sourcetree
+# Slack
+brew cask install slack
+# Google Chrome
+brew cask install google-chrome
 
 # App Store software
 open "macappstore://itunes.apple.com/app/id441258766?mt=12" # Magnet 
@@ -115,5 +120,25 @@ echo "What version of Xcode you want to install? "
 read xcodeVersion
 xcversion install $xcodeVersion
 
+####### Dock Cleanup #######
+brew install dockutil
+dockutil --remove 'Mail' --no-restart
+dockutil --remove 'Contacts' --no-restart
+dockutil --remove 'Maps' --no-restart
+dockutil --remove 'Photos' --no-restart
+dockutil --remove 'Messages' --no-restart
+dockutil --remove 'FaceTime' --no-restart
+dockutil --remove 'News' --no-restart
+dockutil --remove 'App Store' --no-restart
+dockutil --remove 'Launchpad' --no-restart
+dockutil --remove 'Siri' --no-restart
+dockutil --remove 'Downloads' --no-restart
+dockutil --add "/Applications/Slack.app" --after 'Safari' --no-restart
+dockutil --add "/Applications/Utilities/Terminal.app" --after 'Safari' --no-restart
+dockutil --add "/Applications/Sourcetree.app" --after 'Safari' --no-restart
+dockutil --add "/Applications/Visual Studio Code.app" --after 'Safari' --no-restart
+dockutil --add "/Application/Xcode-$xcodeVersion.app" --after 'Safari' --no-restart
+killall Dock
 
+echo ""
 echo "All done, cheers 🙌"
