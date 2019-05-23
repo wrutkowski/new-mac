@@ -75,6 +75,7 @@ curl -o ~/.desktop.jpg https://raw.githubusercontent.com/wrutkowski/new-mac/mast
 sqlite3 ~/Library/Application\ Support/Dock/desktoppicture.db "update data set value = '~/.desktop.jpg'";
 killall Dock
 killall Finder
+killall SystemUIServer
 
 # Safari
 open /Applications/Safari.app
