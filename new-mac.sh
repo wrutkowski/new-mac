@@ -37,7 +37,6 @@ defaults write com.apple.dock "wvous-br-corner" -int 4 # Show Desktop
 defaults write com.apple.dock "wvous-br-modifier" -int 0
 defaults write com.apple.dock "wvous-tr-corner" -int 10 # Lock Screen
 defaults write com.apple.dock "wvous-tr-modifier" -int 0
-
 # Finder
 defaults write com.apple.finder AppleShowAllFiles -string YES
 defaults write com.apple.finder ShowStatusBar -int 1
@@ -45,7 +44,6 @@ defaults write com.apple.finder ShowPathbar -int 1
 defaults write com.apple.finder SidebarTagsSctionDisclosedState -int 0
 defaults write com.apple.finder SidebarPlacesSectionDisclosedState -int 1
 defaults write com.apple.finder SidebarDevicesSectionDisclosedState -int 0
-
 # Other
 defaults write ~/Library/Preferences/.GlobalPreferences.plist "com.apple.trackpad.forceClick" -int 1
 defaults write ~/Library/Preferences/.GlobalPreferences.plist "com.apple.trackpad.forceClick" -int 1
@@ -58,6 +56,12 @@ defaults write ~/Library/Preferences/.GlobalPreferences.plist "NSAutomaticDashSu
 defaults write ~/Library/Preferences/.GlobalPreferences.plist "NSAutomaticPeriodSubstitutionEnabled" -int 0
 defaults write ~/Library/Preferences/.GlobalPreferences.plist "NSAutomaticQuoteSubstitutionEnabled" -int 0
 defaults write ~/Library/Preferences/.GlobalPreferences.plist "NSAutomaticSpellingCorrectionEnabled" -int 0
+# Battery
+defaults write com.apple.menuextra.battery ShowPercent YES
+# Clock
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM  HH:mm:ss"
+defaults write com.apple.menuextra.clock FlashDateSeparators int 0
+defaults write com.apple.menuextra.clock IsAnalog -int 0
 # Three finger drag
 defaults write ~/Library/Preferences/com.apple.driver.AppleBluetoothMultitouch.trackpad.plist "TrackpadThreeFingerDrag" -int 1 
 defaults write ~/Library/Preferences/com.apple.AppleMultitouchTrackpad.plist "TrackpadThreeFingerDrag" -int 1
@@ -81,20 +85,13 @@ echo "- Advanced -> Show full website address: check"
 echo "- Advanced -> Show Develop menu in menu bar: check"
 read -p "Press enter to continue"
 
-####### Xcode #######
-# Installing xcode-install
-gem install xcode-install --no-document
-echo "What version of Xcode you want to install? "
-read xcodeVersion
-xcversion install $xcodeVersion
-
 
 ####### Additional Software #######
 # Quick Look
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package quicklookase qlvideo
 # VSCode
 brew cask install visual-studio-code
-Clipy - clipboard management
+# Clipy - clipboard management
 brew cask install clipy
 open /Applications/Clipy.app
 echo "Change Clipy settings"
@@ -103,11 +100,20 @@ echo "- Menu -> Number of chars in the menu: 200 chars"
 # Sourcetree
 brew cask install sourcetree
 
-App Store software
+# App Store software
 open "macappstore://itunes.apple.com/app/id441258766?mt=12" # Magnet 
 read -p "Install Magnet manually from App Store and press enter to continue"
 
 open "macappstore://itunes.apple.com/app/id1388020431?mt=12" # DevCleaner 
 read -p "Install DevCleaner manually from App Store and press enter to continue"
+
+
+####### Xcode #######
+# Installing xcode-install
+gem install xcode-install --no-document
+echo "What version of Xcode you want to install? "
+read xcodeVersion
+xcversion install $xcodeVersion
+
 
 echo "All done, cheers 🙌"
